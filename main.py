@@ -1,12 +1,12 @@
 from engines.collaboritive_filtering import collaborativefiltering
 from engines.content_based_filtering import content_based_filtering
 from database.connection import Database
-
+import json
 
 def initialize_data():
     print('Starting data generation \n'
           'Started creating collaboritive_filtering_data.csv')
-    # collaborativefiltering()
+    collaborativefiltering()
     print('Finished creating collaboritive_filtering_data.csv \n',
           'Started creating content_based_filtering_data.csv')
     content_based_filtering()
@@ -30,12 +30,21 @@ def runApplication():
             profId = input('Voer een profiel id in: \n')
             mycursor.execute("SELECT * FROM recommendations_collaboritive WHERE '%s'" %profId)
             result = mycursor.fetchone()
-            print(result)
+            products = json.loads(result[1])
+            for item in products:
+                mycursor.execute("SELECT * FROM products WHERE id = '%s'" %item)
+                productInfo = mycursor.fetchone()
+                print(productInfo)
         elif task == 3:
             productId = input('Voer een product id in: \n')
             mycursor.execute("SELECT * FROM recommendations_content_based WHERE '%s'" %productId)
             result = mycursor.fetchone()
-            print(result)
+            products = json.loads(result[1])
+            for item in products:
+                mycursor.execute("SELECT * FROM products WHERE id = '%s'" %item)
+                productInfo = mycursor.fetchone()
+                print(productInfo)
+
         else:
             running = False
 
