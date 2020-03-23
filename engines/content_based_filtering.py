@@ -14,7 +14,7 @@ def content_based_filtering():
         for item in tqdm(result):
             print(item)
             # TODO: Vragen aan Rico hoe je 's in een where clause kan doen
-            mycursor.execute("SELECT * FROM products WHERE products.brand = '%s' AND products.`type` = '%s' AND products.category = '%s';" % (str(item[2]), str(item[3]), str(item[4])))
+            mycursor.execute("SELECT * FROM products WHERE brand = %s AND type = %s AND category = %s", (str(item[2]), str(item[3]), str(item[4])))
             similarItems = mycursor.fetchall()
             similarItems.pop(0)
             if len(similarItems) > 20:
