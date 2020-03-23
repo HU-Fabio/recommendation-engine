@@ -2,11 +2,11 @@
 
 Dit is de repository voor mijn opdracht Structured Programming.
 
-##Configuratie
+# Configuratie
 In `database/connection.py` moet de database connection gemaakt worden dus
 vul daar je gegevens in.
 
-##Libraries
+# Libraries
 Ik gebruik TQDM om progress te zien van hoe lang het nog duurt om alles
 te importeren naar de table.
 Om het te installeren run de volgende command:
@@ -17,9 +17,9 @@ Om het te installeren run de volgende command:
 
 Ik gebruik ook de database van Nick en gebruik MySQL als driver
 
-##Hoe het programma starten
+# Hoe het programma starten
 1. Start `main.py`
-2. kies `Maak recommendation data klaar`
+2. kies `1. Maak recommendation data klaar`
 3. importeer de csvs uit `engines/csv/` in de database met de volgende tabelnamen:
 `recommendations_collaboritive`
 `recommendations_content_based`
